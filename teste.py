@@ -1,9 +1,27 @@
 from tkinter import *
 
 class Tela:
+    popup = True
     user = ""
     passw = ""
     root = Tk()
+
+    def popup(msg="asd", bt_text="confirm",title="Popup"):
+        pop = Tk()
+
+        def confirm():
+            pop.destroy()
+
+        lb_text = Label(pop)
+        bt_confirm = Button(pop, command=confirm)
+
+        lb_text["text"] = msg
+        bt_confirm["text"] = bt_text
+        pop.title(title)
+
+        lb_text.grid(row=0, column=0)
+        bt_confirm.grid(row=1, column=0)
+        pop.mainloop()
 
     def reset():
         root = Tela.root
@@ -52,6 +70,7 @@ class Tela:
         def check_login():
             user = et_user.get()
             passw = et_passw.get()
+            Tela.popup("TESTE 123123123123")
         
         def register():
             Tela.reset()
